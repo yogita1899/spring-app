@@ -23,7 +23,7 @@ pipeline {
 
         stage('run docker container') {
             steps {
-                bat 'docker run -d -p 8081:8080 --name spring-app-container spring-app:latest'
+                bat 'docker run -d -p 8081:8080 --name spring-app-new spring-app:latest'
             }
         }
 
