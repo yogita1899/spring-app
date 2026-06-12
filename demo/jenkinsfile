@@ -1,26 +1,33 @@
+```groovy
 pipeline {
     agent any
+
     stages {
+
         stage('clone code') {
             steps {
                 git 'https://github.com/yogita1899/spring-app.git'
             }
-        stage('build application') {
+        }
 
+        stage('build application') {
             steps {
                 bat 'mvnw.cmd clean package'
             }
         }
+
         stage('build docker image') {
             steps {
                 bat 'docker build -t spring-app:latest .'
             }
         }
+
         stage('run docker container') {
             steps {
                 bat 'docker run -d -p 8080:8080 --name spring-app-container spring-app:latest'
             }
         }
+
     }
 }
-}
+```
